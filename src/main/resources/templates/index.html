@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>STUDENT</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+    <div class="container mt-4">
+
+        <a th:href="@{/nuevo}" class="btn btn-primary">Nuevo Student</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>EMAIL</th>
+                    <th>DOB</th>
+                    <th>AGE</th>
+                </tr>
+
+            </thead>
+            <tbody>
+            <tr th:each="student:${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.email}"></td>
+                <td th:text="${student.dob}"></td>
+                <td th:text="${student.age}"></td>
+                <td>
+                    <a th:href="@{/editar/}+${student.id}" class="btn btn-warning">Actualizar</a>
+                    <a th:href="@{/eliminar/}+${student.id}" onclick="return confirm('Estas seguro que quieres Eliminar?')" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
